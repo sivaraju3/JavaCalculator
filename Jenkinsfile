@@ -5,17 +5,19 @@ pipeline {
         stage('validate') {
             steps {
                 echo 'validating..'
-                sh 'validate'
+                sh 'mvn validate'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
+                sh 'mvn test'
             }
         }
-        stage('Deploy') {
+        stage('build') {
             steps {
-                echo 'Deploying....'
+                echo 'bulding....'
+                sh 'mvn package'
             }
         }
     }
